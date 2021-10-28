@@ -2,7 +2,7 @@
 # Welcome to the object detection multiprocessing #
 # Author: phuoctan4141                            #
 # Date: 28/10/2021                                #
-# Version: 0.1.0                                  #
+# Version: 0.3.0                                  #
 #=================================================#
 
 # # Imports
