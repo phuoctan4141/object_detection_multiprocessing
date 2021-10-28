@@ -1,4 +1,9 @@
-# Welcome to the object detection tutorial !
+#=================================================#
+# Welcome to the object detection multiprocessing #
+# Author: phuoctan4141                            #
+# Date: 28/10/2021                                #
+# Version: 0.1.0                                  #
+#=================================================#
 
 # # Imports
 import multiprocessing
@@ -18,7 +23,7 @@ display_time = 2
 # Set primarry FPS to 0
 fps = 0
 #model link
-model_path = 'refer_3.tflite'
+model_path = 'refer_4a_version_1.tflite'
 
 def grab_screen(p_input):
 
@@ -50,13 +55,16 @@ def TensorflowDetection(p_output, p_input2):
 
     #__run_inference__#
     while True:
-        image_np = p_output.recv()
         start_time = time.time()
-
-        for face_score,face_bbox_ratio in detector.run_inference(image_np):
-            if len(face_bbox_ratio) > 0:
-                for bbox in face_bbox_ratio:
-                    detector.draw_bbox(image_np, bbox, face_score)
+        image_np = p_output.recv()
+        
+        if image_np.size != 0:
+          for face_score,face_bbox_ratio in detector.run_inference(image_np):
+              if len(face_bbox_ratio) > 0:
+                  for bbox in face_bbox_ratio:
+                      detector.draw_bbox(image_np, bbox, face_score)
+        else:
+          continue
     
         # Send detection image to pipe2
         p_input2.send(image_np)
