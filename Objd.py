@@ -1,3 +1,10 @@
+#=================================================#
+# Welcome to the object detection multiprocessing #
+# Author: minhnhut                                #
+# Date: 28/10/2021                                #
+# Version: 0.1.0                                  #
+#=================================================#
+
 import cv2
 import numpy as np
 import tensorflow as tf
